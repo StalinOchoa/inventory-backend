@@ -59,6 +59,7 @@ public class ProductServiceImpl implements IProductService {
 				return new ResponseEntity<ProductResponseRest>(response, HttpStatus.BAD_REQUEST);
 			}
 		} catch (Exception e) {
+			//imprimir log getStackTrace
 			e.getStackTrace();
 			response.setMetadata("respuesta nok","-1", "Error al guardar producto");
 			return new ResponseEntity<ProductResponseRest>(response, HttpStatus.INTERNAL_SERVER_ERROR);

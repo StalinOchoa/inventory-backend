@@ -36,17 +36,18 @@ public class ProductRestController {
 	@PostMapping("/products")
 	//convirtiendo la foto 
 	public ResponseEntity<ProductResponseRest> save(
-			@RequestParam("picture") MultipartFile picture,	
-			@RequestParam("name") String name,
-			@RequestParam("price") int price,
-			@RequestParam("account") int account,
-			@RequestParam("categoryId") Long categoryID) throws IOException		
+			@RequestParam ("picture") MultipartFile picture,	
+			@RequestParam ("name") String name,
+			@RequestParam ("price") int price,
+			@RequestParam ("account") int account,
+			@RequestParam ("categoryId") Long categoryID) throws IOException		
 	{
 		Product product = new Product();
 		product.setName(name);
 		product.setAccount(account);
 		product.setPrice(price);
-		product.setPicture(Util.compressZLib(picture.getBytes()));
+		product.setPicture(null);
+		product.setPicture(Util.compressZlib(picture.getBytes()));
 		ResponseEntity<ProductResponseRest> response = productService.save(product, categoryID);
 		return response;
 	}
